@@ -1,6 +1,6 @@
 package fr.hcu.rtp.commands;
 
-import fr.hcu.rtp.folder.ZoneHandler;
+import fr.hcu.rtp.folder.ZoneRayonHandler;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.CommandException;
 import net.minecraft.command.ICommandSender;
@@ -15,40 +15,42 @@ import net.minecraftforge.server.permission.PermissionAPI;
 import javax.annotation.Nullable;
 import java.util.List;
 
-public class SetZoneCommand extends CommandBase {
+public class SetZoneRayonCommand extends CommandBase {
 
     @Override
     public void execute(MinecraftServer server, ICommandSender sender, String[] args) throws CommandException {
+
         if (!(sender instanceof EntityPlayer)) {
-            sender.sendMessage(new TextComponentString(TextFormatting.RED + "Seul un joueur peut exécuter cette commande !"));
+            sender.sendMessage(new TextComponentString(TextFormatting.RED + "Seul un joueur peut executer cette command !"));
             return;
         }
 
         EntityPlayer player = (EntityPlayer) sender;
-        if (!PermissionAPI.hasPermission(player, "hcu.rtp.use")) {
-            player.sendMessage(new TextComponentString(TextFormatting.RED + "Vous n'avez pas la permission d'utiliser cette command"));
+        if (!PermissionAPI.hasPermission(player, "hcu.rtp.admin")) {
+            player.sendMessage(new TextComponentString(TextFormatting.RED + "Vous n'avez pas la permission d'utiliser cette command !"));
             return;
         }
 
-        if (args.length != 1) {
+        if (args.length != 2) {
             throw new WrongUsageException(getUsage(player));
         }
 
-        String zoneName = args[0];
+        String zonRayonName = args[0];
+        float rayon = Float.parseFloat(args[1]);
         BlockPos playerPos = player.getPosition();
-        ZoneHandler zone = new ZoneHandler();
-        zone.saveZone(zoneName, playerPos.getX(), playerPos.getY(), playerPos.getZ()); // Pass rayon as argument
-        player.sendMessage(new TextComponentString(TextFormatting.GREEN + "Zone " + TextFormatting.AQUA + zoneName + TextFormatting.GREEN + " créée avec succès"));
+        ZoneRayonHandler zoneRayonHandler = new ZoneRayonHandler();
+        zoneRayonHandler.saveZone(zonRayonName, playerPos.getX(), playerPos.getY(), playerPos.getZ(), rayon);
+        player.sendMessage(new TextComponentString(TextFormatting.GREEN + "Zone " + TextFormatting.AQUA + zonRayonName + TextFormatting.GREEN + " créée avec succès!"));
     }
 
     @Override
     public String getName() {
-        return "setzone";
+        return "setzonerayon";
     }
 
     @Override
     public String getUsage(ICommandSender sender) {
-        return "/setzone <nom de la zone>";
+        return "/setzonerayon <nom de la zone> <rayon>";
     }
 
     @Override

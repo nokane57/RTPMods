@@ -1,6 +1,7 @@
 package fr.hcu.rtp;
 
 import fr.hcu.rtp.commands.SetZoneCommand;
+import fr.hcu.rtp.commands.SetZoneRayonCommand;
 import fr.hcu.rtp.utils.Constants;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -37,6 +38,7 @@ public class Main {
     @SideOnly(Side.SERVER)
     @Mod.EventHandler
     public static void serverLoad(FMLServerStartingEvent event) {
+        event.registerServerCommand(new SetZoneRayonCommand());
         event.registerServerCommand(new SetZoneCommand());
     }
 
