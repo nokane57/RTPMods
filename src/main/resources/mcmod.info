@@ -1,0 +1,16 @@
+[
+{
+  "modid": "hcu_rtp_mods",
+  "name": "Hcu Rtp Mods",
+  "description": "Mods Rtp Hcu survival.",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["Nokane_57"],
+  "credits": "Merci a nokane_57 pour le mods de rtp pour le hcu survival",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
