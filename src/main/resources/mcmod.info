@@ -6,7 +6,7 @@
   "version": "${version}",
   "mcversion": "${mcversion}",
   "url": "",
-  "updateUrl": "fr.hcu.rtp.utils.UpdateChecker",
+  "updateUrl": "https://api.github.com/repos/nokane57/RTPMods/releases/latest",
   "authorList": ["Nokane_57"],
   "credits": "Merci a nokane_57 pour le mods de rtp pour le hcu survival",
   "logoFile": "",
