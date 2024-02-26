@@ -25,7 +25,7 @@ public class SetZoneCommand extends CommandBase {
         }
 
         EntityPlayer player = (EntityPlayer) sender;
-        if (!PermissionAPI.hasPermission(player, "hcu.rtp.use")) {
+        if (!PermissionAPI.hasPermission(player, "hcu.rtp.admin")) {
             player.sendMessage(new TextComponentString(TextFormatting.RED + "Vous n'avez pas la permission d'utiliser cette command"));
             return;
         }
@@ -36,10 +36,12 @@ public class SetZoneCommand extends CommandBase {
 
         String zoneName = args[0];
         BlockPos playerPos = player.getPosition();
-        ZoneHandler zone = new ZoneHandler();
-        zone.saveZone(zoneName, playerPos.getX(), playerPos.getY(), playerPos.getZ()); // Pass rayon as argument
+        ZoneHandler zoneHandler = new ZoneHandler();
+        zoneHandler.saveZone(zoneName, playerPos.getX(), playerPos.getY(), playerPos.getZ());
         player.sendMessage(new TextComponentString(TextFormatting.GREEN + "Zone " + TextFormatting.AQUA + zoneName + TextFormatting.GREEN + " créée avec succès"));
     }
+
+
 
     @Override
     public String getName() {

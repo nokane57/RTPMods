@@ -1,5 +1,7 @@
 package fr.hcu.rtp;
 
+
+import fr.hcu.rtp.commands.RtpCommand;
 import fr.hcu.rtp.commands.SetZoneCommand;
 import fr.hcu.rtp.commands.SetZoneRayonCommand;
 import fr.hcu.rtp.utils.Constants;
@@ -40,6 +42,7 @@ public class Main {
     public static void serverLoad(FMLServerStartingEvent event) {
         event.registerServerCommand(new SetZoneRayonCommand());
         event.registerServerCommand(new SetZoneCommand());
+        event.registerServerCommand(new RtpCommand());
     }
 
     // GETTER
