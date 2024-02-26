@@ -6,10 +6,9 @@ import java.util.Scanner;
 
 public class UpdateChecker {
 
-    private static final String UPDATE_URL = "https://api.github.com/repos/nokane57/RTPMods/releases/latest";
 
     public static void checkForUpdates() {
-        try (Scanner scanner = new Scanner(new URL(UPDATE_URL).openStream())) {
+        try (Scanner scanner = new Scanner(new URL(Constants.UPDATER).openStream())) {
             StringBuilder response = new StringBuilder();
             while (scanner.hasNextLine()) {
                 response.append(scanner.nextLine());
@@ -25,9 +24,5 @@ public class UpdateChecker {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    public static void main(String[] args) {
-        checkForUpdates();
     }
 }
