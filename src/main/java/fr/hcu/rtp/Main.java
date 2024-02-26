@@ -5,6 +5,7 @@ import fr.hcu.rtp.commands.RtpCommand;
 import fr.hcu.rtp.commands.SetZoneCommand;
 import fr.hcu.rtp.commands.SetZoneRayonCommand;
 import fr.hcu.rtp.utils.Constants;
+import fr.hcu.rtp.utils.UpdateChecker;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
@@ -25,6 +26,7 @@ public class Main {
     @Mod.EventHandler
     public static void preInit(FMLPreInitializationEvent e) {
         logger = e.getModLog();
+        UpdateChecker.checkForUpdates();
     }
 
     @Mod.EventHandler
