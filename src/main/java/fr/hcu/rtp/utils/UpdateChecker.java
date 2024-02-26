@@ -14,10 +14,9 @@ public class UpdateChecker {
                 response.append(scanner.nextLine());
             }
             String latestVersion = response.toString().split("\"tag_name\":\"")[1].split("\"")[0];
-            String currentVersion = Constants.VERSION; // Replace Mod.VERSION with your actual version
+            String currentVersion = Constants.VERSION;
             if (!latestVersion.equals(currentVersion)) {
                 System.out.println("A new version (" + latestVersion + ") of the mod is available!");
-                // Notify the user and prompt them to download the update
             } else {
                 System.out.println("Your mod is up to date!");
             }
